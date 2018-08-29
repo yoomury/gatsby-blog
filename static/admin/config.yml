@@ -1,0 +1,16 @@
+backend:
+  name: github
+  repo: yoomury/gatsby-blog
+
+media_folder: static/assets
+public_folder: assets
+
+collections:
+  - name: review
+    label: Review
+    folder: review
+    create: true
+    fields:
+      - { name: date, label: Date, widget: date }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
