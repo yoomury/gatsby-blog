@@ -24,7 +24,7 @@ export default ({ data }) => (
           {node.frontmatter.title}{" "}
           <PostDate>— {node.frontmatter.date}</PostDate>
         </PostTitle>
-        <p>{node.excerpt}</p>
+        <p>{node.frontmatter.description}</p>
       </div>
     ))}
   </div>
@@ -39,6 +39,7 @@ export const query = graphql`
           id
           frontmatter {
             title
+            description
             date(formatString: "DD MMMM, YYYY")
           }
           excerpt
