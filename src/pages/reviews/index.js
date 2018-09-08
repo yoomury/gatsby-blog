@@ -20,7 +20,7 @@ export default ({ data: { allMarkdownRemark: { totalCount, edges } } }) => (
     <Title>Bini's Awesome Reviews</Title>
     <h4>{totalCount} Reviews</h4>
     {edges.map(
-      ({ node: { id, frontmatter: { title, date, description, slug } } }) => (
+      ({ node: { id, frontmatter: { title, date, description }, fields: {slug} } }) => (
         <div key={id}>
           <Link to={slug}>
             <PostTitle>

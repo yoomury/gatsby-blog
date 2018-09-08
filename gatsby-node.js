@@ -1,6 +1,27 @@
 const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
 
+
+
+// Implement the Gatsby API “onCreatePage”. This is
+// called after every page is created.
+exports.onCreatePage = async ({ page, boundActionCreators }) => {
+    const { createPage } = boundActionCreators;
+
+    return new Promise((resolve, reject) => {
+        if (page.path === '/') {
+            // It's assumed that `landingPage.js` exists in the `/layouts/` directory
+            page.layout = "empty";
+
+            // Update the page.
+            createPage(page);
+        }
+
+        resolve();
+    });
+};
+
+
 // Implement the Gatsby API “onCreatePage”. This is
 // called after every page is created.
 exports.createPages = ({ boundActionCreators, graphql }) => {

@@ -30,7 +30,7 @@ export default ({ data: { allMarkdownRemark: { totalCount, edges } } }) => (
         <div key={id}>
           <Link to={slug}>
             <PostTitle>
-              {slug} {title} <PostDate>— {date}</PostDate>
+              {title} <PostDate>— {date}</PostDate>
             </PostTitle>
           </Link>
           <p>{description}</p>

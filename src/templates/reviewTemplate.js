@@ -4,11 +4,15 @@ export default function Template({
   data // this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data; // data.markdownRemark holds our post data
-  const { frontmatter } = markdownRemark;
+  const { frontmatter: {date, title, description}, exerpt } = markdownRemark;
   return (
     <div>
-      <h1>Review - {frontmatter.title}</h1>
-      <h3>{frontmatter.date}</h3>
+      <h1>Review - {title}</h1>
+      <h3>{date}</h3>
+        <div>
+            <span>{description}</span>
+            <span>{exerpt}</span>
+        </div>
     </div>
   );
 }
@@ -19,7 +23,9 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        description
       }
+      excerpt
     }
   }
 `;
