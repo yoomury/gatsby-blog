@@ -14,7 +14,7 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query ReviewPostBySlug($path: String!) {
+  query LearningPostBySlug($path: String!) {
     markdownRemark(fields: { slug: { eq: $path } }) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
