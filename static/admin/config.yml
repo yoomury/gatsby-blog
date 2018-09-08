@@ -8,9 +8,22 @@ public_folder: assets
 collections:
   - name: review
     label: Review
-    folder: review
+    folder: src/pages/reviews
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true
     fields:
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "review"}
+      - { name: date, label: Date, widget: date }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
+      - { name: description, label: Description, widget: markdown }
+  - name: learning
+    label: Learning
+    folder: src/pages/learnings
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    create: true
+    fields:
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "learning"}
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }

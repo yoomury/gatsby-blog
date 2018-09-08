@@ -1,50 +1,57 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "gatsby-link";
+import { colors } from "../utils/variables";
 
-const Title = styled.h1`
-  display: inline-block;
-  border-bottom: 1px solid;
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
 `;
 
-const PostTitle = styled.h3`
-  margin-bottom: 10px;
-`;
-
-const PostDate = styled.span`
-  color: #bbb;
-`;
-
-export default ({ data }) => (
-  <div>
-    <Title>Bini's Awesome Reviews</Title>
-    <h4>{data.allMarkdownRemark.totalCount} Reviews</h4>
-    {data.allMarkdownRemark.edges.map(({ node }) => (
-      <div key={node.id}>
-        <PostTitle>
-          {node.frontmatter.title}{" "}
-          <PostDate>— {node.frontmatter.date}</PostDate>
-        </PostTitle>
-        <p>{node.frontmatter.description}</p>
-      </div>
-    ))}
-  </div>
-);
-
-export const query = graphql`
-  query IndexQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            description
-            date(formatString: "DD MMMM, YYYY")
-          }
-          excerpt
-        }
-      }
-    }
+const FirstCategory = styled.div`
+  background-color: ${colors.reviews};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  :hover {
+    opacity: 1;
+  }
+  a:hover {
+    color: ${colors.learnings};
   }
 `;
+
+const SecondCategory = styled.div`
+  background-color: ${colors.learnings};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  :hover {
+    opacity: 1;
+  }
+  justify-content: center;
+  opacity: 0.6;
+  a:hover {
+    color: ${colors.reviews};
+  }
+`;
+
+export default () => (
+  <Container>
+    <FirstCategory>
+      <h1>
+        <Link to="reviews">Reviews</Link>
+      </h1>
+    </FirstCategory>
+    <SecondCategory>
+      <h1>
+        <Link to="learnings">Learnings</Link>
+      </h1>
+    </SecondCategory>
+  </Container>
+);
