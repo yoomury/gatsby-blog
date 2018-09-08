@@ -14,11 +14,15 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             fields {
               slug
             }
+            frontmatter {
+                templateKey
+            }
           }
         }
       }
     }
   `).then(result => {
+      console.log(JSON.stringify(result))
     if (result.errors) {
       return Promise.reject(result.errors);
     }
@@ -27,7 +31,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       createPage({
         path: node.fields.slug,
         component: path.resolve(
-          `src/templates/${String(node.frontmatter.templateKey)}.js`
+          `src/templates/${String(node.frontmatter.templateKey)}Template.js`
         ),
         context: {} // additional data can be passed via context
       });
