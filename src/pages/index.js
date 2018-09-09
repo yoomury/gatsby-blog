@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const FirstCategory = styled.div`
-    background-color: ${colors.reviews};
+    background-color: ${colors.primary};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,12 +22,12 @@ const FirstCategory = styled.div`
         opacity: 1;
     }
     a:hover {
-        color: ${colors.learnings};
+        color: ${colors.secondary};
     }
 `;
 
 const SecondCategory = styled.div`
-    background-color: ${colors.learnings};
+    background-color: ${colors.secondary};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +37,7 @@ const SecondCategory = styled.div`
     justify-content: center;
     opacity: 0.6;
     a:hover {
-        color: ${colors.reviews};
+        color: ${colors.primary};
     }
 `;
 

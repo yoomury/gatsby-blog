@@ -1,4 +1,4 @@
 export const colors = {
-  reviews: "#faf3dd",
-  learnings: "#68b0ab"
+    primary: '#faf3dd',
+    secondary: '#68b0ab'
 };

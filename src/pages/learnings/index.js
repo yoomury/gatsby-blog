@@ -1,41 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import Link from 'gatsby-link';
+import React, { Fragment } from 'react';
+import { Post } from '../../components/Post';
 
-const Title = styled.h1`
-    display: inline-block;
-    border-bottom: 1px solid;
-`;
-
-const PostTitle = styled.h3`
-    margin-bottom: 10px;
-`;
-
-const PostDate = styled.span`
-    color: #bbb;
-`;
-
-export default ({ data: { allMarkdownRemark: { totalCount, edges } } }) => (
-    <div>
-        <Title>Bini's Awesome Learnings</Title>
-        <h4>{totalCount} Learnings</h4>
-        {edges.map(({ node: { id, frontmatter: { title, date, description }, fields: { slug } } }) => (
-            <div key={id}>
-                <Link to={slug}>
-                    <PostTitle>
-                        {title} <PostDate>— {date}</PostDate>
-                    </PostTitle>
-                </Link>
-                <p>{description}</p>
-            </div>
-        ))}
-    </div>
+export default ({ data: { allMarkdownRemark: { edges } } }) => (
+    <Fragment>
+        <h1>Latest Learnings</h1>
+        {edges.map(({ node: { id, frontmatter: { title, description }, fields: { slug } } }) => <Post id={id} title={title} description={description} slug={slug} />)}
+    </Fragment>
 );
 
 export const query = graphql`
     query LearningsQuery {
         allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/learnings/" } }, sort: { fields: [frontmatter___date], order: DESC }) {
-            totalCount
             edges {
                 node {
                     id
@@ -45,7 +20,6 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
-                        date(formatString: "DD MMMM, YYYY")
                     }
                 }
             }
