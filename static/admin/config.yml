@@ -12,11 +12,12 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true
     fields:
-      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "review"}
+      - { name: "templateKey", label: "Template Key", widget: "hidden", default: "review"}
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
       - { name: description, label: Description, widget: markdown }
+      - { name: image, label: Image, widget: "image"}
   - name: learning
     label: Learning
     folder: src/pages/learnings
@@ -28,3 +29,4 @@ collections:
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
       - { name: description, label: Description, widget: markdown }
+      - { name: image, label: Image, widget: "image"}
